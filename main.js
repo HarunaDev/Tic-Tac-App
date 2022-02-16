@@ -9,6 +9,28 @@ let board = ['', '', '', '', '', '', '', '', ''];
 let currentPlayer = 'X';
 let isGameActive = true;
 
+// tile check function 
+const isValidaction = (tile) => {
+    if (tile.innerText === 'X' || tile.innerText === 'O'){
+        return false;
+    }
+
+    return true;
+}
+
+// update board function
+const updateBoard = (index) => {
+    board[index] = currentPlayer;
+}
+
+// remove and change current player
+const changePlayer = () => {
+    playerDisplay.classList.remove(`player${currentPlayer}`);
+    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    playerDisplay.innerText = currentPlayer;
+    playerDisplay.classList.add(`player${currentPlayer}`);
+}
+
 // player action function
 const userAction = (tile, index) => {
     if(isValidaction(tile) && isGameActive) {
